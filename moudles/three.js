@@ -12,7 +12,7 @@ define(function(require,exports,moudle){
 
 		if(val){
 
-		Observer.trigger("add1",val)
+		Observer.trigger("add",val)
 		}
 		
 	}
