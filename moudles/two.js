@@ -9,7 +9,7 @@ define(function(require,exports,moudle){
 	// var spans = document.getElementsByTagName("span");
 
 
-	Observer.on("add1",function(val){
+	Observer.on("add",function(val){
 		
 		var li = document.createElement("li");
 
@@ -28,6 +28,8 @@ define(function(require,exports,moudle){
 		span.onclick = function(){
 
 			ul.removeChild(this.parentNode);
+			
+			num.innerHTML--;
 		}
 
 
