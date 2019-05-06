@@ -12,8 +12,6 @@ define(function(require,exports,moudle){
 
 		if(val){
 
-		Observer.trigger("add");
-
 		Observer.trigger("add1",val)
 		}
 		
