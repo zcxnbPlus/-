@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单js倒计时效果</title>
+</head>
+<body>
+	<div id="box">
+		<span id="_d">00</span>
+		<span id="_h">00</span>
+		<span id="_m">00</span>
+		<span id="_s">00</span>
+	</div>
+	<script type="text/javascript">
+	function countTime() {
+		// 获取当前的时间
+		var date = new Date();
+		// 获取当前毫秒值
+		var now = date.getTime();
+		// console.log(now); 
+
+		// 设置未来时间
+		var str = "2019/5/8 00:00:00";
+		var date1 = new Date(str);
+		// 转为毫秒值
+		var end = date1.getTime();
+		// console.log(end);
+
+		// 时间差 未来的毫秒值 - 当前的毫秒值
+		var result = parseInt((end - now) / 1000);
+		// console.log(leftTime);
+
+		// 定义变量
+		var d, h, m, s;
+
+		if (result >= 0) {
+			d = parseInt(result / 60 / 60 / 24);
+			h = parseInt(result / 60 / 60 % 24);
+			m = parseInt(result / 60 % 60);
+			s = parseInt(result % 60);
+			// console.log(d, h, m, s);
+
+			// 获取元素并设置内部文本
+			document.getElementById("_d").innerHTML = d + "天";
+			document.getElementById("_h").innerHTML = h + "小时";
+			document.getElementById("_m").innerHTML = m + "分";
+			document.getElementById("_s").innerHTML = s + "秒";
+		}
+		// 开启延时器，使用递归的方式，可以动态的显示效果
+		setTimeout(countTime, 1000);
+	}
+
+	window.onload = function() {
+		countTime();
+	}
+
+	</script>
+</body>
+</html>
