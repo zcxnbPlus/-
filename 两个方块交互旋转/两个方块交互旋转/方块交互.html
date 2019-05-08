@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box{
+			position: relative;	
+			width: 500px;
+			height: 500px;
+			margin: 200px auto;
+			background-color: yellow;
+		}
+
+		.box:before {
+		    content: "";
+		    position: absolute;
+		    /*left: -30px;
+		    top: 27px;*/
+		    width: 380px;
+		    height: 380px;
+		    border: 10px solid #ddd;
+		    transform: rotate(136deg);
+		    transition: all .5s;
+		}
+
+		.box:after {
+		    content: "";
+		    position: absolute;
+		   /* left: -30px;
+		    top: 21px;*/
+		    width: 380px;
+		    height: 380px;
+		    border: 10px solid #555;
+		    transform: rotate(-91deg);
+		    transition: all .5s;
+		    -webkit-transition: all .5s;
+		    -moz-transition: all .5s;
+		}
+		.box:hover:after{
+		    transform: rotate(0deg);
+		}
+		.box:hover:before{
+		    transform: rotate(45deg);
+		}
+				
+		
+	</style>
+</head>
+<body>
+
+	<div class="box">
+		
+	</div>
+</body>
+</html>
