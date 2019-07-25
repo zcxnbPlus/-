@@ -5,7 +5,7 @@
 *    height    String        300px        轮播图的高
 *    img       Array         无，必填      图片数组，成员值为地址
 *    time      Number        3000         轮播图的切换间隔
-*    duration  String        1s           轮播图的过度时间
+*    duration  Number        1000         过度时间,单位ms
 */
 
 
@@ -40,7 +40,7 @@
           width: 100%;
           height: 100%;
             .breath-img {
-              transition-duration: 1s;
+              transition-duration: 1000ms;
               position:absolute;
               width: 100%;
               height: 100%;
@@ -119,8 +119,8 @@ export default {
     },
     // 过度时间
     duration:{
-      type:String,
-      default:'1s'
+      type:Number,
+      default:1000
     }
   },
     mounted() {
@@ -180,18 +180,17 @@ export default {
         Array.from(this.$el.children[0].children[0].children).map( item => {
         item.style.width = this.$props.width;
         item.style.height = this.$props.height;
-        item.style.transitionDuration = this.duration
+        item.style.transitionDuration = this.duration + "ms";
         })
       },
       // 滚动轮播图初始化方法
       slideSitting() {
-        //设置swiper的样式
+                  //设置swiper的样式
           this.$el.style.width = this.$props.width;
           this.$el.style.height = this.$props.height;
+          // 定义图片宽度及滑动步长
+          let width = window.getComputedStyle(this.$el).width
 
-          
-        let width = window.getComputedStyle(this.$el).width
-          
           //设置图片父元素ul的长度
           this.$el.children[0].children[0].style.width = this.$props.img.length * parseFloat(width) + 'px';
           // 设置ul的过度时间
@@ -231,7 +230,7 @@ export default {
                     this.$el.children[0].children[0].style.transitionDuration = '0s';
                     this.slideChange(1);
                      setTimeout( () => {
-                      this.$el.children[0].children[0].style.transitionDuration = '1s';
+                      this.$el.children[0].children[0].style.transitionDuration = this.duration + "ms";
                     },500)
                 },1100)
               }
